@@ -3,23 +3,24 @@
 #include <sstream>
 #include <fstream>
 #include <openssl/evp.h>
+#include <iomanip>
 
 enum HashAlgorithm {
-    SHA256 = 1,
-    SHA512,
-    SHA1,
-    SHA384,
-    SHA224,
-    MD5,
-    MD5_SHA1,
-    BLAKE256,
-    BLAKE512,
-    WHIRLPOOL,
-    RIPEMD160,
-    SHA3_224,
-    SHA3_256,
-    SHA3_384,
-    SHA3_512
+    HASH_SHA256 = 1,
+    HASH_SHA512,
+    HASH_SHA1,
+    HASH_SHA384,
+    HASH_SHA224,
+    HASH_MD5,
+    HASH_MD5_SHA1,
+    HASH_BLAKE256,
+    HASH_BLAKE512,
+    HASH_WHIRLPOOL,
+    HASH_RIPEMD160,
+    HASH_SHA3_224,
+    HASH_SHA3_256,
+    HASH_SHA3_384,
+    HASH_SHA3_512
 };
 
 std::string computeHash(const std::string& str, const EVP_MD* md) {
@@ -42,21 +43,21 @@ std::string computeHash(const std::string& str, const EVP_MD* md) {
 
 std::string hashMessage(int option, const std::string& message) {
     switch (option) {
-        case SHA256: return computeHash(message, EVP_sha256());
-        case SHA512: return computeHash(message, EVP_sha512());
-        case SHA1:   return computeHash(message, EVP_sha1());
-        case SHA384: return computeHash(message, EVP_sha384());
-        case SHA224: return computeHash(message, EVP_sha224());
-        case MD5:    return computeHash(message, EVP_md5());
-        case MD5_SHA1: return computeHash(message, EVP_md5_sha1());
-        case BLAKE256: return computeHash(message, EVP_blake2s256());
-        case BLAKE512: return computeHash(message, EVP_blake2b512());
-        case WHIRLPOOL: return computeHash(message, EVP_whirlpool());
-        case RIPEMD160: return computeHash(message, EVP_ripemd160());
-        case SHA3_224: return computeHash(message, EVP_sha3_224());
-        case SHA3_256: return computeHash(message, EVP_sha3_256());
-        case SHA3_384: return computeHash(message, EVP_sha3_384());
-        case SHA3_512: return computeHash(message, EVP_sha3_512());
+        case HASH_SHA256: return computeHash(message, EVP_sha256());
+        case HASH_SHA512: return computeHash(message, EVP_sha512());
+        case HASH_SHA1:   return computeHash(message, EVP_sha1());
+        case HASH_SHA384: return computeHash(message, EVP_sha384());
+        case HASH_SHA224: return computeHash(message, EVP_sha224());
+        case HASH_MD5:    return computeHash(message, EVP_md5());
+        case HASH_MD5_SHA1: return computeHash(message, EVP_md5_sha1());
+        case HASH_BLAKE256: return computeHash(message, EVP_blake2s256());
+        case HASH_BLAKE512: return computeHash(message, EVP_blake2b512());
+        case HASH_WHIRLPOOL: return computeHash(message, EVP_whirlpool());
+        case HASH_RIPEMD160: return computeHash(message, EVP_ripemd160());
+        case HASH_SHA3_224: return computeHash(message, EVP_sha3_224());
+        case HASH_SHA3_256: return computeHash(message, EVP_sha3_256());
+        case HASH_SHA3_384: return computeHash(message, EVP_sha3_384());
+        case HASH_SHA3_512: return computeHash(message, EVP_sha3_512());
         default: return "";
     }
 }

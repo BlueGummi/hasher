@@ -4,10 +4,9 @@ LDFLAGS = -lcrypto
 
 TARGET = main
 SRC = main.cpp
-HDR = computehash.h
 all: $(TARGET)
 
-$(TARGET): $(SRC) $(HDR)
+$(TARGET): $(SRC)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(SRC)
 
 clean:
